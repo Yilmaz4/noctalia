@@ -2,6 +2,7 @@
 
 #include "core/timer_manager.h"
 #include "render/animation/animation_manager.h"
+#include "render/core/async_texture_cache.h"
 #include "render/scene/input_dispatcher.h"
 #include "render/scene/node.h"
 #include "scripting/plugin_file_cache.h"
@@ -57,8 +58,9 @@ public:
   ~SettingsWindow();
 
   void initialize(
-      WaylandConnection& wayland, ConfigService* config, RenderContext* renderContext, DependencyService* dependencies,
-      UPowerService* upower, IdleManager* idleManager, CompositorPlatform* platform, AccountsService* accounts = nullptr
+      WaylandConnection& wayland, ConfigService* config, RenderContext* renderContext, AsyncTextureCache* textureCache,
+      DependencyService* dependencies, UPowerService* upower, IdleManager* idleManager, CompositorPlatform* platform,
+      AccountsService* accounts = nullptr
   );
 
   void open(std::string context = "");
@@ -204,6 +206,7 @@ private:
   std::uint64_t m_pluginListRefreshGeneration = 0;
   scripting::PluginFileCache m_pluginFileCache;
   RenderContext* m_renderContext = nullptr;
+  AsyncTextureCache* m_textureCache = nullptr;
   DependencyService* m_dependencies = nullptr;
   UPowerService* m_upower = nullptr;
   AccountsService* m_accounts = nullptr;

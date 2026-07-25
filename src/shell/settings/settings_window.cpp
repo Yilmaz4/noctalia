@@ -150,14 +150,16 @@ namespace {
 SettingsWindow::~SettingsWindow() { destroyWindow(); }
 
 void SettingsWindow::initialize(
-    WaylandConnection& wayland, ConfigService* config, RenderContext* renderContext, DependencyService* dependencies,
-    UPowerService* upower, IdleManager* idleManager, CompositorPlatform* platform, AccountsService* accounts
+    WaylandConnection& wayland, ConfigService* config, RenderContext* renderContext, AsyncTextureCache* textureCache,
+    DependencyService* dependencies, UPowerService* upower, IdleManager* idleManager, CompositorPlatform* platform,
+    AccountsService* accounts
 ) {
   m_wayland = &wayland;
   m_platform = platform;
   m_idleManager = idleManager;
   m_config = config;
   m_renderContext = renderContext;
+  m_textureCache = textureCache;
   m_dependencies = dependencies;
   m_upower = upower;
   m_accounts = accounts;

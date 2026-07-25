@@ -132,8 +132,8 @@ void Application::initUiRenderSurfacesAndSettings() {
   m_wallpaper.initialize(m_wayland, &m_configService, &m_renderContext, &m_sharedTextureCache, &m_themeService);
   m_backdrop.initialize(m_wayland, &m_configService, &m_sharedTextureCache, &m_glShared);
   m_settingsWindow.initialize(
-      m_wayland, &m_configService, &m_renderContext, &m_dependencyService, m_upowerService.get(), &m_idleManager,
-      &m_compositorPlatform, m_accountsService.get()
+      m_wayland, &m_configService, &m_renderContext, &m_asyncTextureCache, &m_dependencyService, m_upowerService.get(),
+      &m_idleManager, &m_compositorPlatform, m_accountsService.get()
   );
   m_settingsWindow.setPluginManager(&m_pluginManager);
   m_settingsWindow.setOpenDesktopWidgetEditor([this]() {
